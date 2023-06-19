@@ -1,33 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Canvas, extend } from '@react-three/fiber'
 import './App.css'
+import { shaderMaterial } from '@react-three/drei';
+import { useRef } from 'react';
 
+
+export const BrisaMaterial = shaderMaterial(
+  {
+    effectFactor: 1.2,
+    dispFactor: 0,
+  },
+  ` varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }`,
+  ` varying vec2 vUv;
+    void main() {
+      vec2 uv = vUv;
+      gl_FragColor = vec4(uv.x,uv.y,0,1);
+      
+    }`
+)
+
+extend({ BrisaMaterial })
 function App() {
-  const [count, setCount] = useState(0)
+  const ref = useRef()
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <Canvas>
+      <mesh>
+        <boxBufferGeometry args={[2,2,2]}/>
+        <brisaMaterial ref={ref}/>
+      </mesh>
+    </Canvas>
     </>
   )
 }
