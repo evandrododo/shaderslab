@@ -1,28 +1,11 @@
 import { Canvas, extend } from '@react-three/fiber'
+import { Perf } from 'r3f-perf';
 import './App.css'
-import { shaderMaterial } from '@react-three/drei';
 import { useRef } from 'react';
-
-
-export const BrisaMaterial = shaderMaterial(
-  {
-    effectFactor: 1.2,
-    dispFactor: 0,
-  },
-  ` varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-    }`,
-  ` varying vec2 vUv;
-    void main() {
-      vec2 uv = vUv;
-      gl_FragColor = vec4(uv.x,uv.y,0,1);
-      
-    }`
-)
+import { BrisaMaterial } from './materials/BrisaMaterial';
 
 extend({ BrisaMaterial })
+
 function App() {
   const ref = useRef()
 
@@ -30,9 +13,11 @@ function App() {
     <>
     <Canvas>
       <mesh>
-        <boxBufferGeometry args={[2,2,2]}/>
+        <boxBufferGeometry args={[5,5,3]}/>
         <brisaMaterial ref={ref}/>
       </mesh>
+
+      <Perf />
     </Canvas>
     </>
   )

@@ -1,24 +1,13 @@
-import { ShaderMaterial } from "three";
+import { shaderMaterial } from "@react-three/drei";
+import vertexShader from "../shaders/brisa/vertex.glsl";
+import fragmentShader from "../shaders/brisa/fragment.glsl";
 
-export class BrisaMaterial extends ShaderMaterial {
-  constructor() {
-    super({
-      vertexShader: `
-    void main()
-    {
-      gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
-    }
-  `,
-      fragmentShader: `
-    void main()
-    {
-    float red = gl_FragCoord.x;
-    float green = gl_FragCoord.y;
-    float blue = gl_FragCoord.x;
-        gl_FragColor = vec4(red, green, blue, 1.0);
-    }
-  `
-  });
-  }
-}
+export const BrisaMaterial = shaderMaterial(
+  {
+    effectFactor: 1.2,
+    dispFactor: 0,
+  },
+  vertexShader,
+  fragmentShader
+)
 
