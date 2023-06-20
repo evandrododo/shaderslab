@@ -4,8 +4,8 @@ import fragmentShader from "../shaders/brisa/fragment.glsl";
 
 export const BrisaMaterial = shaderMaterial(
   {
-    effectFactor: 1.2,
-    dispFactor: 0,
+    iResolution: [7, 5],
+    iTime: 0,
   },
   vertexShader,
   fragmentShader

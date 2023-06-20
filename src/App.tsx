@@ -1,22 +1,17 @@
-import { Canvas, extend } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Perf } from 'r3f-perf';
 import './App.css'
-import { useRef } from 'react';
-import { BrisaMaterial } from './materials/BrisaMaterial';
+import { Screen } from './Screen';
+import { OrbitControls } from '@react-three/drei';
 
-extend({ BrisaMaterial })
 
 function App() {
-  const ref = useRef()
-
   return (
     <>
     <Canvas>
-      <mesh>
-        <boxBufferGeometry args={[5,5,3]}/>
-        <brisaMaterial ref={ref}/>
-      </mesh>
 
+      <OrbitControls />
+      <Screen />
       <Perf />
     </Canvas>
     </>
