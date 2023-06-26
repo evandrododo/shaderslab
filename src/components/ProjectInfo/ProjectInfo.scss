@@ -1,0 +1,45 @@
+.right-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+
+  .title {
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+      transition: width 0.2s ease-in-out;
+  }
+  &:hover {
+    .title {
+      width: 5.6em;
+      transition: width 0.5s ease-in-out;
+    }
+  }
+}
+
+.github {
+  color: white; 
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: end;
+  gap: 1em;
+  text-decoration: none;
+  opacity: 0.3;
+  &:hover {
+    opacity: 1;
+  }
+  transition: opacity 0.3s ease-in-out;
+}

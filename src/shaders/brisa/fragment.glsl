@@ -49,9 +49,8 @@ void main() {
         );
 
         finalColor += col * d;
-
     }
-uv = uv0;
+    uv = uv0;
     for(float i = 0.0; i < 4.0; i++) {
         uv *= 1.74;
         uv = fract(uv);
