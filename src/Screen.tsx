@@ -10,10 +10,8 @@ export const Screen = () => {
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
-    ref.current.uniforms.iTime.value = clock.getElapsedTime()/2;
+    ref.current.uniforms.iTime.value = clock.getElapsedTime();
     ref.current.uniforms.iResolution.value = [10, 5];
-    // refGeometry.current?.rotateY(0.005);
-    // refGeometry.current?.rotateX(0.007);
   });
 
   return (
