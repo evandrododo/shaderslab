@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import { Perf } from 'r3f-perf';
 import './App.css'
-import { Screen } from './Screen';
+import { VegasSphere } from './VegasSphere';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { ProjectInfo } from './components/ProjectInfo/ProjectInfo';
 import { useControls } from 'leva';
@@ -26,13 +26,12 @@ function App() {
           far: 1000,
         }}
       >
-        {/* <Environment /> */}
         <Environment 
           background={true}
           files={'./hdr/orbital_sunset.hdr'}
         />
         <OrbitControls />
-        <Screen />
+        <VegasSphere />
         <mesh position={[7, 0, 7]}>
           <sphereBufferGeometry args={[1, 256, 256]} />
           <meshStandardMaterial color="#555555" />
