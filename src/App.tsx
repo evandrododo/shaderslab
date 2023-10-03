@@ -26,10 +26,10 @@ function App() {
           far: 1000,
         }}
       >
-        <Environment 
+        {/* <Environment 
           background={true}
           files={'./hdr/orbital_sunset.hdr'}
-        />
+        /> */}
         <OrbitControls />
         <VegasSphere />
         <mesh position={[7, 0, 7]}>
@@ -37,6 +37,9 @@ function App() {
           <meshStandardMaterial color="#555555" />
         </mesh>
         {showDebug && <Perf position="bottom-left" />}
+        <ambientLight
+          intensity={0.5}
+        />
       </Canvas>
       <ProjectInfo
         title="shaderslab"
