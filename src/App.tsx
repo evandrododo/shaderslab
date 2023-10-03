@@ -2,7 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { Perf } from 'r3f-perf';
 import './App.css'
 import { VegasSphere } from './VegasSphere';
-import { Environment, OrbitControls } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { ProjectInfo } from './components/ProjectInfo/ProjectInfo';
 import { useControls } from 'leva';
 
