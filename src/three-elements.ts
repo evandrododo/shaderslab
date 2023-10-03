@@ -1,12 +1,12 @@
 import { ReactThreeFiber } from "@react-three/fiber";
-import { BrisaMaterial } from "./materials/BrisaMaterial";
+import { VegasMaterial } from "./materials/VegasMaterial";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    brisaMaterial: ReactThreeFiber.Object3DNode<
+    vegasMaterial: ReactThreeFiber.Object3DNode<
       // @ts-expect-error
-      BrisaMaterial,
-      typeof BrisaMaterial
+      VegasMaterial,
+      typeof VegasMaterial
     >;
   }
 }
