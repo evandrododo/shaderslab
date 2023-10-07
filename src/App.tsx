@@ -5,6 +5,8 @@ import { VegasSphere } from './VegasSphere';
 import { OrbitControls } from '@react-three/drei';
 import { ProjectInfo } from './components/ProjectInfo/ProjectInfo';
 import { useControls } from 'leva';
+import { DoubleSide } from 'three';
+import { WebCamVideoPlane } from './components/WebCamVideoPlane/WebCamVideoPlane';
 
 function App() {
 
@@ -30,16 +32,16 @@ function App() {
           background={true}
           files={'./hdr/orbital_sunset.hdr'}
         /> */}
-        <OrbitControls />
+        <group position={[0, -20, 50]}>
         <VegasSphere />
-        <mesh position={[7, 0, 7]}>
-          <sphereBufferGeometry args={[1, 256, 256]} />
-          <meshStandardMaterial color="#555555" />
-        </mesh>
+        </group>
         {showDebug && <Perf position="bottom-left" />}
         <ambientLight
           intensity={0.5}
         />
+        <WebCamVideoPlane />
+        
+        <OrbitControls />
       </Canvas>
       <ProjectInfo
         title="shaderslab"
