@@ -7,6 +7,7 @@ import { ProjectInfo } from './components/ProjectInfo/ProjectInfo';
 import { useControls } from 'leva';
 import { DoubleSide } from 'three';
 import { WebCamVideoPlane } from './components/WebCamVideoPlane/WebCamVideoPlane';
+import { VegasPlane } from './components/VegasPlane/VegasPlane';
 
 function App() {
 
@@ -32,15 +33,16 @@ function App() {
           background={true}
           files={'./hdr/orbital_sunset.hdr'}
         /> */}
-        <group position={[0, -20, 50]}>
-        <VegasSphere />
+        <group position={[0, 0, 100]}>
+          <VegasSphere />
+        </group>
+        <group position={[0, 0, 1]}>
+          <VegasPlane />
         </group>
         {showDebug && <Perf position="bottom-left" />}
-        <ambientLight
-          intensity={0.5}
-        />
+        <ambientLight intensity={0.5} />
         <WebCamVideoPlane />
-        
+
         <OrbitControls />
       </Canvas>
       <ProjectInfo
