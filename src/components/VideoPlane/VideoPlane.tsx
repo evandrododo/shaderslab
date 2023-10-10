@@ -10,14 +10,14 @@ export const VideoPlane = ({ userMedia }: {
   // shaders options on leva: Chroma, Edge
   const { shader } = useControls({
     shader: {
-      value: "chroma",
+      value: "edge",
       options: ["chroma", "edge"],
     },
   });
 
   const size = useAspect(4,3);
   return (
-    
+
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
 
