@@ -1,16 +1,12 @@
-import { Canvas } from '@react-three/fiber'
-import { Perf } from 'r3f-perf';
-import './App.css'
-import { VegasSphere } from './VegasSphere';
-import { OrbitControls } from '@react-three/drei';
-import { ProjectInfo } from './components/ProjectInfo/ProjectInfo';
-import { useControls } from 'leva';
-import { DoubleSide } from 'three';
-import { WebCamVideoPlane } from './components/WebCamVideoPlane/WebCamVideoPlane';
-import { VegasPlane } from './components/VegasPlane/VegasPlane';
+import { Canvas } from "@react-three/fiber";
+import { Perf } from "r3f-perf";
+import "./App.css";
+import { OrbitControls } from "@react-three/drei";
+import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
+import { useControls } from "leva";
+import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
 
 function App() {
-
   const { showDebug } = useControls(
     {
       showDebug: false,
@@ -40,7 +36,7 @@ function App() {
         </group> */}
         <ambientLight intensity={0.5} />
         <group position={[0, 0, 2]}>
-        <WebCamVideoPlane />
+          <WebCamVideoPlane />
         </group>
 
         <OrbitControls />
@@ -54,4 +50,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
