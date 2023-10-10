@@ -1,7 +1,7 @@
 import { extend, useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import { ShaderMaterial } from "three"
-import { VegasMaterial } from './materials/VegasMaterial';
+import { VegasMaterial } from './materials/ShaderMaterialVegas';
 
 extend({ VegasMaterial });
 export const VegasSphere = () => {

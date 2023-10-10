@@ -1,16 +1,32 @@
 import { useAspect } from "@react-three/drei";
 import { Suspense } from "react";
-import { VideoTextureMaterial } from "../../materials/VideoTextureMaterial";
+import { FilterMaterialVideoChroma } from "../../materials/FilterMaterialVideoChroma";
+import { FilterMaterialVideoEdge } from "../../materials/FilterMaterialVideoEdge";
+import { useControls } from "leva";
 
 export const VideoPlane = ({ userMedia }: {
   userMedia: MediaStream
 }) => {
-  const size = useAspect(4, 3);
-  return <mesh scale={size} position={[0, 0, 0]}>
+  // shaders options on leva: Chroma, Edge
+  const { shader } = useControls({
+    shader: {
+      value: "chroma",
+      options: ["chroma", "edge"],
+    },
+  });
+
+  const size = useAspect(4,3);
+  return (
+    
+    <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
-      
+
       <Suspense>
-        <VideoTextureMaterial userMedia={userMedia} />
+        {shader === "chroma" && (
+          <FilterMaterialVideoChroma userMedia={userMedia} />
+        )}
+        {shader === "edge" && <FilterMaterialVideoEdge userMedia={userMedia} />}
       </Suspense>
     </mesh>
+  );
 };

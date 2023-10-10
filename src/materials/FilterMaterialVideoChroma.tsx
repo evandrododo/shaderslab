@@ -1,26 +1,11 @@
-import { shaderMaterial, useVideoTexture } from "@react-three/drei";
+import { useVideoTexture } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { DoubleSide, ShaderMaterial, VideoTexture } from "three";
-import vertexShader from "../shaders/chroma/vertex.glsl";
-import fragmentShader from "../shaders/chroma/fragment.glsl";
 import { extend } from "@react-three/fiber";
 import { useControls } from "leva";
+import { ShaderMaterialChroma } from "./ShaderMaterialChroma";
 
-// get the texture from the webcam
-export const ChromaShaderMaterial = shaderMaterial(
-  {
-    map: null,
-    iTime: 0,
-    iResolution: [0, 0],
-    chromaKey: [0.0, 1.0, 0.0],
-    threshold: 0.3,
-    tolerance: 0.1,
-  },
-  vertexShader,
-  fragmentShader
-);
-
-extend({ ChromaShaderMaterial });
+extend({ ShaderMaterialChroma });
 
 const hexToVec3 = (hex: string) => {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -29,7 +14,8 @@ const hexToVec3 = (hex: string) => {
   return [r, g, b];
 };
 
-export const VideoTextureMaterial = ({
+export const FilterMaterialVideoChroma
+ = ({
   userMedia,
 }: {
   userMedia: MediaStream;
@@ -79,7 +65,7 @@ export const VideoTextureMaterial = ({
   }
   , [tolerance]);
   return (
-    <chromaShaderMaterial
+    <shaderMaterialChroma
       map={videoTexture}
       toneMapped={false}
       side={DoubleSide}

@@ -23,27 +23,28 @@ function App() {
     <>
       <Canvas
         camera={{
-          position: [0, 0, 10],
-          fov: 75,
-          near: 0.1,
-          far: 1000,
+          position: [0, 0, -10],
+          near: 0.001,
+          far: 100000,
         }}
       >
         {/* <Environment 
           background={true}
           files={'./hdr/orbital_sunset.hdr'}
         /> */}
-        <group position={[0, 0, 100]}>
+        {/* <group position={[0, 0, 100]}>
           <VegasSphere />
-        </group>
-        <group position={[0, 0, 1]}>
+        </group> */}
+        {/* <group position={[0, 0, 0]}>
           <VegasPlane />
-        </group>
-        {showDebug && <Perf position="bottom-left" />}
+        </group> */}
         <ambientLight intensity={0.5} />
+        <group position={[0, 0, 2]}>
         <WebCamVideoPlane />
+        </group>
 
         <OrbitControls />
+        {showDebug && <Perf position="bottom-left" />}
       </Canvas>
       <ProjectInfo
         title="shaderslab"

@@ -1,6 +1,7 @@
 import { ReactThreeFiber } from "@react-three/fiber";
-import { VegasMaterial } from "./materials/VegasMaterial";
-import { ChromaShaderMaterial } from "./materials/VideoTextureMaterial";
+import { VegasMaterial } from "./materials/ShaderMaterialVegas";
+import { ShaderMaterialChroma } from "./materials/ShaderMaterialChroma";
+import { ShaderMaterialEdge } from "./materials/ShaderMaterialEdge";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
@@ -9,10 +10,15 @@ declare module "@react-three/fiber" {
       VegasMaterial,
       typeof VegasMaterial
     >;
-    chromaShaderMaterial: ReactThreeFiber.Object3DNode<
+    shaderMaterialChroma: ReactThreeFiber.Object3DNode<
       // @ts-expect-error
-      ChromaShaderMaterial,
-      typeof ChromaShaderMaterial
+      ShaderMaterialChroma,
+      typeof ShaderMaterialChroma
+    >;
+    shaderMaterialEdge: ReactThreeFiber.Object3DNode<
+      // @ts-expect-error
+      ShaderMaterialEdge,
+      typeof ShaderMaterialEdge
     >;
   }
 }

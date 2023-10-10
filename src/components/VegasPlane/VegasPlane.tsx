@@ -1,7 +1,7 @@
 import { extend, useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import { DoubleSide, ShaderMaterial } from "three"
-import { VegasMaterial } from "../../materials/VegasMaterial";
+import { VegasMaterial } from "../../materials/ShaderMaterialVegas";
 import { useAspect } from "@react-three/drei";
 
 extend({ VegasMaterial });
