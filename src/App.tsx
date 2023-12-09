@@ -10,7 +10,6 @@ function App() {
   const { showDebug } = useControls(
     {
       showDebug: false,
-      inputNormal: { value: 0.5, min: 0, max: 1, step: 0.01 },
     },
     { collapsed: true }
   );
