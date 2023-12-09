@@ -6,7 +6,8 @@ import { useControls } from "leva";
 
 export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   // shaders options on leva: Chroma, Edge
-  const { shader } = useControls({
+  const { shader, 
+  } = useControls({
     shader: {
       value: "edge",
       options: ["chroma", "edge"],
@@ -17,8 +18,7 @@ export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   const mediaHeight = userMedia.getVideoTracks()[0].getSettings().height || 1;
   const mediaAspect = mediaWidth / mediaHeight;
   const size = useAspect(mediaAspect, 1, 0.1);
-  console.log("mediaAspect", mediaAspect);
-
+  console.log("userMedia.getVideoTracks()[0].getSettings()", userMedia.getVideoTracks()[0].getSettings());
   return (
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
