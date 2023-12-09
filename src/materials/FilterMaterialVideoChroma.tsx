@@ -22,7 +22,7 @@ export const FilterMaterialVideoChroma
 }) => {
   const { chromaKey, threshold, tolerance } = useControls({
     chromaKey: {
-      value: "#00ff00",
+      value: "#b1541d",
       label: "Chroma Key",
     },
     threshold: {

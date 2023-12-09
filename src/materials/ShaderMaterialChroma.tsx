@@ -7,7 +7,7 @@ export const ShaderMaterialChroma = shaderMaterial(
     map: null,
     iTime: 0,
     iResolution: [0, 0],
-    chromaKey: [0.0, 1.0, 0.0],
+    chromaKey: [0.692, 0.329, 0.114], // #b1541d
     threshold: 0.3,
     tolerance: 0.1,
   },

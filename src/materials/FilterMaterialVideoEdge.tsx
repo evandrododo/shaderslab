@@ -7,19 +7,18 @@ import { ShaderMaterialEdge } from "./ShaderMaterialEdge";
 
 extend({ ShaderMaterialEdge });
 
-export const FilterMaterialVideoEdge
- = ({
+export const FilterMaterialVideoEdge = ({
   userMedia,
 }: {
   userMedia: MediaStream;
 }) => {
-  const { distH, intensity  } = useControls({
+  const { distH, intensity } = useControls({
     distH: {
       value: 1.0,
       min: 0.0,
       max: 10.0,
     },
-   intensity: {
+    intensity: {
       value: 5.0,
       min: 0.0,
       max: 20.0,
@@ -29,9 +28,8 @@ export const FilterMaterialVideoEdge
   const [videoTexture, setVideoTexture] = useState<VideoTexture>();
   const texture = useVideoTexture(userMedia);
   const mediaTrackSettings = userMedia.getVideoTracks()[0].getSettings();
-  const resolution = [mediaTrackSettings.width, mediaTrackSettings.height];
   const materialRef = useRef<ShaderMaterial>();
-  
+
   useEffect(() => {
     if (materialRef.current === undefined) return;
     materialRef.current.uniforms.map.value = texture;
@@ -40,20 +38,18 @@ export const FilterMaterialVideoEdge
 
   useEffect(() => {
     if (materialRef.current === undefined) return;
+    const resolution = [mediaTrackSettings.width, mediaTrackSettings.height];
     materialRef.current.uniforms.iResolution.value = resolution;
-  }
-  , [resolution]);
+  }, [mediaTrackSettings]);
 
   useEffect(() => {
     if (materialRef.current === undefined) return;
     materialRef.current.uniforms.distH.value = distH;
-  }
-  , [distH]);
+  }, [distH]);
   useEffect(() => {
     if (materialRef.current === undefined) return;
     materialRef.current.uniforms.intensity.value = intensity;
-  }
-  , [intensity]);
+  }, [intensity]);
 
   return (
     <shaderMaterialEdge

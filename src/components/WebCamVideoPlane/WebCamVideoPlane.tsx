@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { VideoPlane } from "../VideoPlane/VideoPlane";
 
 export const WebCamVideoPlane = () => {
-
   const [userMedia, setUserMedia] = useState<MediaStream>();
   // Gets user webcam
   useEffect(() => {
@@ -15,7 +14,6 @@ export const WebCamVideoPlane = () => {
     });
   }, []);
 
-
-  if(!userMedia) return null;
+  if (!userMedia) return null;
   return <VideoPlane userMedia={userMedia} />;
 };

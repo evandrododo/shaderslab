@@ -6,17 +6,17 @@ import { ShaderMaterialEdge } from "./materials/ShaderMaterialEdge";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     vegasMaterial: ReactThreeFiber.Object3DNode<
-      // @ts-expect-error
+      // @ts-expect-error Material type
       VegasMaterial,
       typeof VegasMaterial
     >;
     shaderMaterialChroma: ReactThreeFiber.Object3DNode<
-      // @ts-expect-error
+      // @ts-expect-error Material type
       ShaderMaterialChroma,
       typeof ShaderMaterialChroma
     >;
     shaderMaterialEdge: ReactThreeFiber.Object3DNode<
-      // @ts-expect-error
+      // @ts-expect-error Material type
       ShaderMaterialEdge,
       typeof ShaderMaterialEdge
     >;

@@ -4,9 +4,7 @@ import { FilterMaterialVideoChroma } from "../../materials/FilterMaterialVideoCh
 import { FilterMaterialVideoEdge } from "../../materials/FilterMaterialVideoEdge";
 import { useControls } from "leva";
 
-export const VideoPlane = ({ userMedia }: {
-  userMedia: MediaStream
-}) => {
+export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   // shaders options on leva: Chroma, Edge
   const { shader } = useControls({
     shader: {
@@ -15,9 +13,11 @@ export const VideoPlane = ({ userMedia }: {
     },
   });
 
-  const size = useAspect(4,3);
+  const mediaWidth = userMedia.getVideoTracks()[0].getSettings().width || 1;
+  const mediaHeight = userMedia.getVideoTracks()[0].getSettings().height || 1;
+  const mediaAspect = mediaWidth / mediaHeight;
+  const size = useAspect(mediaAspect, 1, 0.1);
   return (
-
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
 
