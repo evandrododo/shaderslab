@@ -40,7 +40,7 @@ export const FilterMaterialVideoEdge = ({
     if (materialRef.current === undefined) return;
     const resolution = [mediaTrackSettings.width, mediaTrackSettings.height];
     materialRef.current.uniforms.iResolution.value = resolution;
-  }, [mediaTrackSettings]);
+  }, [mediaTrackSettings.width, mediaTrackSettings.height]);
 
   useEffect(() => {
     if (materialRef.current === undefined) return;
