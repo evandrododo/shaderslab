@@ -19,9 +19,7 @@ export const WebCamVideoPlane = () => {
       });
 
     const media = navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: "environment",
-      },
+      video: true,
     });
 
     media.then((stream) => {

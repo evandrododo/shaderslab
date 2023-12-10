@@ -31,9 +31,8 @@ function App() {
 
         <PerspectiveCamera
           makeDefault
-          position={[0, 0, -1]}
+          position={[0, 0, -10]}
           fov={75}
-          zoom={8}
           near={0.000001}
           far={1000}
         />
