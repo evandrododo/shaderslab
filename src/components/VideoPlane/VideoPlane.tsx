@@ -1,5 +1,5 @@
 import { useAspect } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { FilterMaterialVideoChroma } from "../../materials/FilterMaterialVideoChroma";
 import { FilterMaterialVideoEdge } from "../../materials/FilterMaterialVideoEdge";
 import { useControls } from "leva";
@@ -18,8 +18,7 @@ export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   const mediaAspect = mediaWidth / mediaHeight;
   const size = useAspect(mediaAspect, 1);
 
-  console.log("size", size)
-
+  
   return (
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />

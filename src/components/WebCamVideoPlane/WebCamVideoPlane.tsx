@@ -3,6 +3,17 @@ import { VideoPlane } from "../VideoPlane/VideoPlane";
 
 export const WebCamVideoPlane = () => {
   const [userMedia, setUserMedia] = useState<MediaStream>();
+  const [renderizado, setRenderizado] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setRenderizado(true);
+    }, 100);
+
+    // Limpa o timeout para evitar execuções extras
+    return () => clearTimeout(timeout);
+  }, []);
+
   // Gets user webcam
   useEffect(() => {
     navigator.mediaDevices
@@ -31,5 +42,5 @@ export const WebCamVideoPlane = () => {
   if (!userMedia || !userMedia.getVideoTracks().length) {
     return null;
   }
-  return <VideoPlane userMedia={userMedia} />;
+  return <>{renderizado && <VideoPlane userMedia={userMedia} />};</>;
 };
