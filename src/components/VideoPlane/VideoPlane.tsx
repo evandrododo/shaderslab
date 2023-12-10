@@ -1,5 +1,5 @@
 import { useAspect } from "@react-three/drei";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { FilterMaterialVideoChroma } from "../../materials/FilterMaterialVideoChroma";
 import { FilterMaterialVideoEdge } from "../../materials/FilterMaterialVideoEdge";
 import { useControls } from "leva";
