@@ -10,10 +10,13 @@ export const WebCamVideoPlane = () => {
     });
 
     media.then((stream) => {
+      console.log("stream", stream.getVideoTracks()[0].getSettings());
       setUserMedia(stream);
     });
   }, []);
 
-  if (!userMedia) return null;
+  if (!userMedia || !userMedia.getVideoTracks().length) {
+    return null;
+  }
   return <VideoPlane userMedia={userMedia} />;
 };
