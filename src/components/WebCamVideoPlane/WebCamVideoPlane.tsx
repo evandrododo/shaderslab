@@ -36,6 +36,11 @@ export const WebCamVideoPlane = () => {
 
     media.then((stream) => {
       console.log("stream", stream);
+      console.log("stream.getVideoTracks()", stream.getVideoTracks());
+      console.log(
+        "stream.getVideoTracks()[0].getSettings()",
+        stream.getVideoTracks()[0].getSettings()
+      );
       setUserMedia(stream);
     });
   }, []);
