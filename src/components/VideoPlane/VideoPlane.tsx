@@ -18,7 +18,13 @@ export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   const mediaHeight = userMedia.getVideoTracks()[0].getSettings().height || 1;
   const mediaAspect = mediaWidth / mediaHeight;
   const size = useAspect(mediaAspect, 1, 0.1);
+  console.log("userMedia", userMedia);
+  console.log("userMedia.getVideoTracks()", userMedia.getVideoTracks());
   console.log("userMedia.getVideoTracks()[0].getSettings()", userMedia.getVideoTracks()[0].getSettings());
+
+  // test if userMedia is loaded and ready
+
+
   return (
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
