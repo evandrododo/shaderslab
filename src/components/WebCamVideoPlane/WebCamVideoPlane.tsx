@@ -43,5 +43,8 @@ export const WebCamVideoPlane = () => {
   if (!userMedia || !userMedia.getVideoTracks().length) {
     return null;
   }
-  return <>{renderizado && <VideoPlane userMedia={userMedia} />};</>;
+  return <>
+    {renderizado}
+    <VideoPlane userMedia={userMedia} />
+  </>;
 };
