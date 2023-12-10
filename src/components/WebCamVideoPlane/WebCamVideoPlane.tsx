@@ -7,6 +7,7 @@ export const WebCamVideoPlane = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
+      console.log("renderizado");
       setRenderizado(true);
     }, 100);
 
