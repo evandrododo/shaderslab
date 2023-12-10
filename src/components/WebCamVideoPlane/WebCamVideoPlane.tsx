@@ -6,11 +6,13 @@ export const WebCamVideoPlane = () => {
   // Gets user webcam
   useEffect(() => {
     const media = navigator.mediaDevices.getUserMedia({
-      video: true,
+      video: {
+        facingMode: "environment",
+      },
     });
 
     media.then((stream) => {
-      console.log("stream", stream.getVideoTracks()[0].getSettings());
+      console.log("stream", stream);
       setUserMedia(stream);
     });
   }, []);
