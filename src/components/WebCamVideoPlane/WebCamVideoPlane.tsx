@@ -5,6 +5,19 @@ export const WebCamVideoPlane = () => {
   const [userMedia, setUserMedia] = useState<MediaStream>();
   // Gets user webcam
   useEffect(() => {
+    navigator.mediaDevices
+      .enumerateDevices()
+      .then((devices) => {
+        devices.forEach((device) => {
+          console.log(
+            `${device.kind}: ${device.label} id = ${device.deviceId}`
+          );
+        });
+      })
+      .catch((err) => {
+        console.error(`${err.name}: ${err.message}`);
+      });
+
     const media = navigator.mediaDevices.getUserMedia({
       video: {
         facingMode: "environment",
