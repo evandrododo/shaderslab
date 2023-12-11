@@ -3,7 +3,7 @@ import { Perf } from "r3f-perf";
 import "./App.css";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
-import { useControls } from "leva";
+import { Leva, useControls } from "leva";
 import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
 
 function App() {
@@ -11,7 +11,10 @@ function App() {
     {
       showDebug: false,
     },
-    { collapsed: true }
+    {
+      collapsed: true,
+      position: "bottom-right",
+    }
   );
 
   return (
@@ -42,9 +45,19 @@ function App() {
           <WebCamVideoPlane />
         </group>
 
-        <OrbitControls />
+        <OrbitControls makeDefault enableRotate={false} />
         {showDebug && <Perf position="bottom-left" />}
       </Canvas>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 20,
+          left: 20,
+          zIndex: 2,
+        }}
+      >
+        <Leva fill collapsed hideCopyButton />
+      </div>
       <ProjectInfo
         title="shaderslab"
         gitHubUrl="https://github.com/evandrododo/shaderslab"

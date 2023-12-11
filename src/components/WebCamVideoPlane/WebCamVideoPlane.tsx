@@ -3,17 +3,6 @@ import { VideoPlane } from "../VideoPlane/VideoPlane";
 
 export const WebCamVideoPlane = () => {
   const [userMedia, setUserMedia] = useState<MediaStream>();
-  const [renderizado, setRenderizado] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      console.log("renderizado");
-      setRenderizado(true);
-    }, 100);
-
-    // Limpa o timeout para evitar execuções extras
-    return () => clearTimeout(timeout);
-  }, []);
 
   // Gets user webcam
   useEffect(() => {
@@ -35,12 +24,6 @@ export const WebCamVideoPlane = () => {
     });
 
     media.then((stream) => {
-      console.log("stream", stream);
-      console.log("stream.getVideoTracks()", stream.getVideoTracks());
-      console.log(
-        "stream.getVideoTracks()[0].getSettings()",
-        stream.getVideoTracks()[0].getSettings()
-      );
       setUserMedia(stream);
     });
   }, []);
@@ -48,8 +31,9 @@ export const WebCamVideoPlane = () => {
   if (!userMedia || !userMedia.getVideoTracks().length) {
     return null;
   }
-  return <>
-    {renderizado}
-    <VideoPlane userMedia={userMedia} />
-  </>;
+  return (
+    <>
+      <VideoPlane userMedia={userMedia} />
+    </>
+  );
 };
