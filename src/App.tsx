@@ -1,10 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 import "./App.css";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
 import { Leva, useControls } from "leva";
 import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
+import Camera from "./components/Camera/Camera";
+import Controls from "./components/Controls/Controls";
 
 function App() {
   const { showDebug } = useControls(
@@ -16,6 +17,9 @@ function App() {
       position: "bottom-right",
     }
   );
+  console.log("showDebug", showDebug);
+
+  const radius = 4;
 
   return (
     <>
@@ -31,21 +35,56 @@ function App() {
           <VegasPlane />
         </group> */}
         {/* Camera */}
+        <Camera />
 
-        <PerspectiveCamera
-          makeDefault
-          position={[0, 0, -10]}
-          fov={75}
-          near={0.000001}
-          far={1000}
-        />
 
         <ambientLight intensity={0.5} />
-        <group position={[0, 0, 0]}>
+        
+        <group position={[0, 0, radius]}>
+          <WebCamVideoPlane />
+        </group> 
+        <group 
+        position={[radius, 0, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+        >
           <WebCamVideoPlane />
         </group>
 
-        <OrbitControls makeDefault enableRotate={false} />
+        {new Array(10).fill(0).map((_, i) => (
+          <group position={[
+            Math.sin(
+              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
+            ) * radius,
+            0, 
+            Math.cos(
+              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
+            ) * radius
+            ]}>
+            <mesh>
+              <sphereGeometry args={[1/10, 32, 32]} />
+              <meshBasicMaterial color="hotpink" />
+            </mesh>
+          </group>
+        ))}
+        {new Array(10).fill(0).map((_, i) => (
+          <group position={[
+            Math.sin(
+              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
+            ) * radius,
+            
+            Math.cos(
+              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
+            ) * radius,
+            0
+            ]}>
+            <mesh>
+              <sphereGeometry args={[1/10, 32, 32]} />
+              <meshBasicMaterial color="red" />
+            </mesh>
+          </group>
+        ))}
+
+        <Controls />
         {showDebug && <Perf position="bottom-left" />}
       </Canvas>
       <div

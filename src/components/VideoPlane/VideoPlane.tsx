@@ -16,9 +16,8 @@ export const VideoPlane = ({ userMedia }: { userMedia: MediaStream }) => {
   const mediaWidth = userMedia.getVideoTracks()[0].getSettings().width || 1;
   const mediaHeight = userMedia.getVideoTracks()[0].getSettings().height || 1;
   const mediaAspect = mediaWidth / mediaHeight;
-  const size = useAspect(mediaAspect, 1);
+  const size = useAspect(mediaAspect, 1, 4);
 
-  
   return (
     <mesh scale={size} position={[0, 0, 0]}>
       <planeGeometry />
