@@ -1,11 +1,11 @@
 import { Canvas } from "@react-three/fiber";
+import { Leva, useControls } from "leva";
 import { Perf } from "r3f-perf";
 import "./App.css";
-import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
-import { Leva, useControls } from "leva";
-import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
 import Camera from "./components/Camera/Camera";
 import Controls from "./components/Controls/Controls";
+import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
+import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
 
 function App() {
   const { showDebug } = useControls(
@@ -18,8 +18,6 @@ function App() {
     }
   );
   console.log("showDebug", showDebug);
-
-  const radius = 4;
 
   return (
     <>
@@ -37,52 +35,11 @@ function App() {
         {/* Camera */}
         <Camera />
 
-
         <ambientLight intensity={0.5} />
-        
-        <group position={[0, 0, radius]}>
-          <WebCamVideoPlane />
-        </group> 
-        <group 
-        position={[radius, 0, 0]}
-        rotation={[0, Math.PI / 2, 0]}
-        >
-          <WebCamVideoPlane />
-        </group>
 
-        {new Array(10).fill(0).map((_, i) => (
-          <group position={[
-            Math.sin(
-              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
-            ) * radius,
-            0, 
-            Math.cos(
-              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
-            ) * radius
-            ]}>
-            <mesh>
-              <sphereGeometry args={[1/10, 32, 32]} />
-              <meshBasicMaterial color="hotpink" />
-            </mesh>
-          </group>
-        ))}
-        {new Array(10).fill(0).map((_, i) => (
-          <group position={[
-            Math.sin(
-              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
-            ) * radius,
-            
-            Math.cos(
-              ((i / 10) * Math.PI * 2) + (Math.PI / 2)
-            ) * radius,
-            0
-            ]}>
-            <mesh>
-              <sphereGeometry args={[1/10, 32, 32]} />
-              <meshBasicMaterial color="red" />
-            </mesh>
-          </group>
-        ))}
+        <WebCamVideoPlane />
+
+        {/* <WebCamVideoPlane shader="trail" /> */}
 
         <Controls />
         {showDebug && <Perf position="bottom-left" />}

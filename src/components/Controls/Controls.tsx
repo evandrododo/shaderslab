@@ -9,9 +9,9 @@ const Controls = () => {
   const lookAtTarget = useRef({ x: initialLookAt[0], y: initialLookAt[1], z: initialLookAt[2] }).current;
 
   const finalLookAt = [4, 0, 0];
-  const duration = 1;
+  const duration = 5;
 
-  const [isAnimating, setIsAnimating] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     // Animação GSAP para o lookAt
@@ -29,7 +29,7 @@ const Controls = () => {
       onComplete: () => setIsAnimating(false),
       onReverseComplete: () => setIsAnimating(false),
       // stop for 1 second before repeating
-      repeatDelay: 1,
+      repeatDelay: 5,
       ease: "power2.inOut",
     });
   }, [camera]);
