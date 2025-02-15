@@ -1,9 +1,10 @@
 import { Canvas } from "@react-three/fiber";
+import { Leva, useControls } from "leva";
 import { Perf } from "r3f-perf";
 import "./App.css";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import Camera from "./components/Camera/Camera";
+import Controls from "./components/Controls/Controls";
 import { ProjectInfo } from "./components/ProjectInfo/ProjectInfo";
-import { Leva, useControls } from "leva";
 import { WebCamVideoPlane } from "./components/WebCamVideoPlane/WebCamVideoPlane";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       position: "bottom-right",
     }
   );
+  console.log("showDebug", showDebug);
 
   return (
     <>
@@ -31,21 +33,15 @@ function App() {
           <VegasPlane />
         </group> */}
         {/* Camera */}
-
-        <PerspectiveCamera
-          makeDefault
-          position={[0, 0, -10]}
-          fov={75}
-          near={0.000001}
-          far={1000}
-        />
+        <Camera />
 
         <ambientLight intensity={0.5} />
-        <group position={[0, 0, 0]}>
-          <WebCamVideoPlane />
-        </group>
 
-        <OrbitControls makeDefault enableRotate={false} />
+        <WebCamVideoPlane />
+
+        {/* <WebCamVideoPlane shader="trail" /> */}
+
+        <Controls />
         {showDebug && <Perf position="bottom-left" />}
       </Canvas>
       <div

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { VideoPlane } from "../VideoPlane/VideoPlane";
 
-export const WebCamVideoPlane = () => {
+export const WebCamVideoPlane = ({ shader }: { shader?: string }) => {
   const [userMedia, setUserMedia] = useState<MediaStream>();
 
   // Gets user webcam
@@ -33,7 +33,7 @@ export const WebCamVideoPlane = () => {
   }
   return (
     <>
-      <VideoPlane userMedia={userMedia} />
+      <VideoPlane userMedia={userMedia} shader={shader} />
     </>
   );
 };
